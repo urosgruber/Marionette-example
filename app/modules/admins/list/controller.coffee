@@ -1,9 +1,11 @@
 entities = require "entities"
 View = require "./view"
+BaseController = require "lib/controller"
+
 appChannel = Backbone.Radio.channel "app"
 adminChannel = Backbone.Radio.channel "admins"
 
-Controller = Mn.Object.extend
+Controller = BaseController.extend
 
     initialize: (options) ->
         admins = entities.request "admins:entities"
@@ -12,8 +14,7 @@ Controller = Mn.Object.extend
         @listenTo view, "childview:admin:clicked", (child, args) ->
             adminChannel.request "admin:clicked", child.model
 
-        region = appChannel.request "default:region"
-        region.show view
+        @show view
 
     getAdminsView: (admins) ->
         new View.Admins

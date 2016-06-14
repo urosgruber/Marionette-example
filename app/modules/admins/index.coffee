@@ -8,9 +8,11 @@ Router = Mn.AppRouter.extend
         "admins": "list"
         "admins/:id": "show"
 
+    # execute: (callback, args, name) ->
+    #     callback.apply @, args if callback
+
     onRoute: (name, path, args) ->
         navs.request "nav:choose", "admins"
-        console.log "Name: #{name} -> path: #{path}"
 
 API =
     list: ->
@@ -18,7 +20,6 @@ API =
             #foo: bar ## possible options to pass
 
     show: (id, admin) ->
-        debugger
         new ShowController
             id: id
             admin: admin
