@@ -14,5 +14,8 @@ class Navs extends Mn.CollectionView
         return unless item.isVisible()
         super
 
+Unauth  = Mn.View.extend template: false
+
 module.exports =
     Navs: Navs
+    Unauth: Unauth

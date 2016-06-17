@@ -2,8 +2,9 @@ navs = Backbone.Radio.channel "navs"
 adminChannel = Backbone.Radio.channel "admins"
 ListController = require "./list/controller"
 ShowController = require "./show/controller"
+AuthRouter = require "lib/auth_router"
 
-Router = Mn.AppRouter.extend
+Router = AuthRouter.extend
     appRoutes:
         "admins": "list"
         "admins/:id": "show"

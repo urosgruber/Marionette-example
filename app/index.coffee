@@ -15,6 +15,9 @@ require 'lib/view_helpers'
 dev = require 'services/dev'
 dev.start()
 
+## Auth
+require 'services/auth'
+
 ## Load & start our app
 # can also use $ ->jQ ready event
 document.addEventListener 'DOMContentLoaded', () ->

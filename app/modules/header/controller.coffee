@@ -1,18 +1,30 @@
 channel = require "entities"
 View = require "./view"
+BaseController = require "lib/controller"
 appChannel = Backbone.Radio.channel "app"
 
-Controller = Mn.Object.extend
+Controller = BaseController.extend
+    channelName: "auth"
+    radionEvents:
+        "authorize": "onAutorize"
 
     initialize: (options) ->
-        navs = channel.request "navs:entities"
-        view = @getNavsView navs
         rootView = appChannel.request "root:view"
         @listenTo rootView, "render", (ev) ->
-            rootView.showChildView "header", view
+            @showNavs rootView.getRegion("header")
 
-    getNavsView: (navs) ->
-        new View.Navs
+    onAutorize: ->
+        
+    showNavs: (region) ->
+        authorized = @getChannel().request "authorized"
+        navs = channel.request "navs:entities"
+        view = @getNavsView authorized, navs
+
+        @show view, region: region
+
+    getNavsView: (auth, navs) ->
+        View = if auth then View.Navs else View.Unauth
+        new View
             collection: navs
 
 module.exports = Controller
