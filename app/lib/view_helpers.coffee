@@ -1,6 +1,4 @@
 # Put your handlebars.js helpers here.
-Handlebars = require "handlebars"
-
 Handlebars.logger.level = 0
 
 Handlebars.registerHelper 'pick', (val, options) ->
