@@ -19,7 +19,6 @@ Auth = Mn.Object.extend
         "logout"     : "logout"
 
     initialize: (options) ->
-        debugger
         @_determineLogin()
         @_configureAjax()
 
