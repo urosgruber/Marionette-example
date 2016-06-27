@@ -40,6 +40,7 @@ API =
             { id: "dashboard", name: "Dashboard", url: "",        icon: "icon-dashboard", visible: true }
             { id: "admins",    name: "Admins",    url: "admins",  icon: "icon-admins",    visible: true }
             { id: "profile",   name: "Profile",   url: "profile", icon: "icon-profile",   visible: true }
+            { id: "about",     name: "About",     url: "about",   icon: "icon-about",     visible: true }
         ]
 
 channel.reply "navs:entities", ->
