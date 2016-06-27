@@ -37,7 +37,7 @@ Navs = Backbone.Collection.extend
 API =
     getNavs: (params = {}) ->
         new Navs [
-            { id: "dashboard", name: "Dashboard", url: "/",       icon: "icon-dashboard", visible: true }
+            { id: "dashboard", name: "Dashboard", url: "",        icon: "icon-dashboard", visible: true }
             { id: "admins",    name: "Admins",    url: "admins",  icon: "icon-admins",    visible: true }
             { id: "profile",   name: "Profile",   url: "profile", icon: "icon-profile",   visible: true }
         ]

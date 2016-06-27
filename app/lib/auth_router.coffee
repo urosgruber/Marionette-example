@@ -12,11 +12,12 @@ Router = Mn.AppRouter.extend
 
     execute: (callback, args, name) ->
         authorized = authChannel.request "authorized"
-        if authorized and callback
-            callback.apply @, args
+        ## If not authorized prevent route execution
+        unless authorized
+            authChannel.trigger "unauthorize"
+            false
 
-        authChannel.trigger "unauthorize"
-        false
+        callback.apply @, args if callback
 
     _navigateToLogin: ->
         @navigate "login", trigger: true
